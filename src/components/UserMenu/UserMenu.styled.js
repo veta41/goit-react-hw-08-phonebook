@@ -11,7 +11,7 @@ export const UserInfoTitle = styled.span``;
 export const Button = styled.button`
   display: inline-block;
   background-color: transparent;
-  color: #42362b;
+  color: #a16a93;
 
   font-weight: 500;
   font-size: 16px;

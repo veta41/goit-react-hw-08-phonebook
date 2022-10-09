@@ -1,10 +1,10 @@
-import { Bars } from 'react-loader-spinner';
 import { LoaderContainer } from './Loader.styled';
+import { TailSpin } from 'react-loader-spinner';
 
-export default function Loader() {
+export const Loader = () => {
   return (
     <LoaderContainer>
-      <Bars color="#42362b" height={80} width={80} />
+      <TailSpin color="#3f51b5" height={150} width={150} ariaLabel="loading" />
     </LoaderContainer>
   );
-}
+};

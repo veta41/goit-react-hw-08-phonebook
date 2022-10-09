@@ -1,3 +1,4 @@
+import ParticlesLines from 'components/ParticlesLines/ParticlesLines';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
@@ -35,9 +36,10 @@ export default function LoginPage() {
 
   return (
     <Container>
+      <ParticlesLines />
       <Form onSubmit={handleSubmit}>
         <Label>
-          <LableText>Введіть свою електронну адресу</LableText>
+          <LableText>Email Address</LableText>
           <Input
             onChange={handleChange}
             type="email"
@@ -50,9 +52,9 @@ export default function LoginPage() {
 
         <Label>
           <LableText>
-            Введіть пароль
+            Password
             <LableInfo>
-              (мінімум 7 символів, ви ввели {password.length})
+              (min 7 characters you have entered {password.length})
             </LableInfo>
           </LableText>
           <Input
@@ -63,11 +65,11 @@ export default function LoginPage() {
             autoComplete="off"
             required
             pattern="(?=.*\d).{7,}"
-            title="Пароль має містити мінімум 7 символів, цифри або малі букви латинського алфавіту"
+            title="The password must contain at least 7 characters, numbers or lowercase letters of the Latin alphabet"
           />
         </Label>
 
-        <FormButton type="submit">Авторизуватися</FormButton>
+        <FormButton type="submit">Log in</FormButton>
       </Form>
     </Container>
   );

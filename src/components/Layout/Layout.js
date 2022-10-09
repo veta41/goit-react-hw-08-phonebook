@@ -1,4 +1,4 @@
-import Loader from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import Menu from 'components/Menu/Menu';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';

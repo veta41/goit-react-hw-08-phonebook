@@ -13,14 +13,14 @@ const contactsSlice = createSlice({
   initialState,
 
   reducers: {
-    changeFilter: (state, action) => {
-      state.filter = action.payload;
+    changeFilter: (state, { payload }) => {
+      state.filter = payload;
     },
   },
 
   extraReducers: {
-    [fetchContacts.fulfilled](state, action) {
-      state.items = action.payload;
+    [fetchContacts.fulfilled](state, { payload }) {
+      state.items = payload;
       state.isLoading = false;
       state.error = null;
     },
@@ -28,40 +28,38 @@ const contactsSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
-    [fetchContacts.rejected](state, action) {
+    [fetchContacts.rejected](state, { payload }) {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = payload;
     },
 
-    [addContact.fulfilled](state, action) {
+    [addContact.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload);
+      state.items.push(payload);
     },
     [addContact.pending](state) {
       state.isLoading = true;
       state.error = null;
     },
-    [addContact.rejected](state, action) {
+    [addContact.rejected](state, { payload }) {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = payload;
     },
 
-    [deleteContact.fulfilled](state, action) {
+    [deleteContact.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.error = null;
-      const index = state.items.findIndex(
-        contact => contact.id === action.payload
-      );
+      const index = state.items.findIndex(contact => contact.id === payload);
       state.items.splice(index, 1);
     },
     [deleteContact.pending](state) {
       state.isLoading = true;
-      // state.error = null;
+      state.error = null;
     },
-    [deleteContact.rejected](state, action) {
+    [deleteContact.rejected](state, { payload }) {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = payload;
     },
   },
 });

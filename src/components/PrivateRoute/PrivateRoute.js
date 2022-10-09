@@ -1,11 +1,7 @@
+import ParticlesLines from 'components/ParticlesLines/ParticlesLines';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import {
-  Container,
-  Link,
-  Text,
-  Title,
-} from '../../pages/HomePage/HomePage.styled';
+import { Container, Link, Text, Title } from './PrivateRoute.styled';
 
 export default function PrivateRoute({ children }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -14,10 +10,11 @@ export default function PrivateRoute({ children }) {
     <>
       {!isLoggedIn && (
         <Container>
-          <Title>Вітаємо у книзі контактів</Title>
+          <ParticlesLines />
+          <Title>Welcome to the contact book</Title>
           <Text>
-            Щоб отримати доступ до ваших контактів <br />
-            будь ласка <Link to="/login">авторизуйтеся</Link>
+            To access your contacts <br />
+            please <Link to="/login">log in</Link>
           </Text>
         </Container>
       )}

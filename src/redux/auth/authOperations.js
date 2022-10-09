@@ -15,43 +15,43 @@ const token = {
 
 export const register = createAsyncThunk(
   'authorization/register',
-  async (credentials, thunkAPI) => {
+  async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/signup', credentials);
       token.set(data.token);
-      Notify.success(`Реєстрація успішна`);
+      Notify.success(`Registration is successful`);
       return data;
     } catch (error) {
-      Notify.failure(`Некоректно введені дані`);
+      Notify.failure(`Incorrectly entered data`);
       console.log(error);
-      return thunkAPI.rejectWithValue(error);
+      return rejectWithValue(error);
     }
   }
 );
 
 export const logIn = createAsyncThunk(
   'authorization/login',
-  async (credentials, thunkAPI) => {
+  async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/login', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
-      Notify.failure(`Невірно введені дані`);
-      return thunkAPI.rejectWithValue(error);
+      Notify.failure(`Incorrectly entered data`);
+      return rejectWithValue(error);
     }
   }
 );
 
 export const logOut = createAsyncThunk(
   'authorization/logout',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       await axios.post('users/logout');
       token.unset();
     } catch (error) {
       console.log(error);
-      return thunkAPI.rejectWithValue(error);
+      return rejectWithValue(error);
     }
   }
 );

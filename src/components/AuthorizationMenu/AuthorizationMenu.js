@@ -1,10 +1,10 @@
-import { Container, Link } from './AuthorizationMenu.styled';
+import { AuthNavStyled, Container } from './AuthorizationMenu.styled';
 
 export default function AuthorizationMenu() {
   return (
     <Container>
-      <Link to="/register">Реєстрація</Link>
-      <Link to="/login">Авторизація</Link>
+      <AuthNavStyled to="/register">Register</AuthNavStyled>
+      <AuthNavStyled to="/login">LogIn</AuthNavStyled>
     </Container>
   );
 }

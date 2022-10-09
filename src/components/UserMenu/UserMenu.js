@@ -14,7 +14,7 @@ export default function UserMenu() {
     <>
       <Container>
         <UserInfoTitle>
-          Привіт {userName} | Ваша пошта: {userEmail} |
+          Hello {userName} | Your mail: {userEmail} |
         </UserInfoTitle>
         <Button
           type="button"
@@ -23,7 +23,7 @@ export default function UserMenu() {
             navigate('/');
           }}
         >
-          Вийти
+          Go out
         </Button>
       </Container>
     </>

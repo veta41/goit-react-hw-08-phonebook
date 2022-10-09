@@ -10,8 +10,8 @@ export default function Menu() {
   return (
     <Container>
       <Nav>
-        <MenuLink to="/">Домашня сторінка</MenuLink>
-        {isLoggedIn && <MenuLink to="contacts">Контакти</MenuLink>}
+        <MenuLink to="/">Нome</MenuLink>
+        {isLoggedIn && <MenuLink to="contacts">Register</MenuLink>}
       </Nav>
 
       {isLoggedIn ? <UserMenu /> : <AuthorizationMenu />}

@@ -7,40 +7,39 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
 
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('/contacts');
 
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async (contact, thunkAPI) => {
+  async (contact, { rejectWithValue }) => {
     try {
       const response = await axios.post('/contacts', contact);
       Notify.success(`Contact ${contact.name}, added`);
       console.log(response.data);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (contactId, name, thunkAPI) => {
+  async (contactId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${contactId}`);
+      const { data } = await axios.delete(`/contacts/${contactId}`);
 
-      console.log(response.data.id);
-      Notify.failure(`Контакт ${name}, видалено`);
-      // return response.data.id;
+      console.log(data.contactId);
+      return data.contactId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
