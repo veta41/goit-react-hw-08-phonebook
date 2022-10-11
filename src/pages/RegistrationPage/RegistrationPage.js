@@ -38,6 +38,13 @@ export default function RegistrationPage() {
     e.preventDefault();
 
     dispatch(register({ name, email, password }));
+    reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   return (

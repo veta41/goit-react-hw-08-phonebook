@@ -32,6 +32,12 @@ export default function LoginPage() {
     e.preventDefault();
 
     dispatch(logIn({ email, password }));
+    reset();
+  };
+
+  const reset = () => {
+    setEmail('');
+    setPassword('');
   };
 
   return (
