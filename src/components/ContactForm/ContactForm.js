@@ -8,7 +8,7 @@ import { selectContacts } from 'redux/contacts/contactsSelector';
 
 function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -18,8 +18,8 @@ function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
 
       default:
@@ -30,7 +30,7 @@ function ContactForm() {
   const handlerSubmit = event => {
     event.preventDefault();
 
-    const newContact = { name, phone };
+    const newContact = { name, number };
 
     contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
       ? alert(`${name} already in contact`)
@@ -40,7 +40,7 @@ function ContactForm() {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -59,10 +59,10 @@ function ContactForm() {
       <Label htmlFor="contact_number">Number</Label>
       <Input
         onChange={handlerChange}
-        value={phone}
+        value={number}
         id="contact_number"
         type="tel"
-        name="phone"
+        name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
@@ -74,7 +74,7 @@ function ContactForm() {
 
 Form.propTypes = {
   name: PropTypes.string,
-  phone: PropTypes.string,
+  number: PropTypes.string,
 };
 
 export default ContactForm;

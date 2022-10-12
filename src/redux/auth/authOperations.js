@@ -57,7 +57,7 @@ export const logOut = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk(
-  'authorization/refresh',
+  'authorization/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
 
